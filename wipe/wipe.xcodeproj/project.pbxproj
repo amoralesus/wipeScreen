@@ -31,6 +31,7 @@
 		B6D41CD4184140A200665449 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CD3184140A200665449 /* Search.m */; };
 		B6D41CD618418F1F00665449 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D41CD518418F1F00665449 /* SearchResultCell.xib */; };
 		B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CDB184191B900665449 /* SearchResultCell.m */; };
+		B6F8A02D1842AF9E002B6D89 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F8A02C1842AF9E002B6D89 /* MainNavigationController.m */; };
 		B6F96F8618423C6300F438B2 /* com.wipemyscreenclean.bethany.mov in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */; };
 		B6F96F8818423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */; };
 		B6F96F8F1842559300F438B2 /* GirlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F96F8D1842559300F438B2 /* GirlsViewController.m */; };
@@ -85,6 +86,8 @@
 		B6D41CD518418F1F00665449 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		B6D41CDA184191B900665449 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		B6D41CDB184191B900665449 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		B6F8A02B1842AF9E002B6D89 /* MainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
+		B6F8A02C1842AF9E002B6D89 /* MainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
 		B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = com.wipemyscreenclean.bethany.mov; sourceTree = "<group>"; };
 		B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = com.wipemyscreenclean.bethany.jpg; sourceTree = "<group>"; };
 		B6F96F8C1842559300F438B2 /* GirlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GirlsViewController.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 			children = (
 				B6CEE5E61841391000149B01 /* AppDelegate.h */,
 				B6CEE5E71841391000149B01 /* AppDelegate.m */,
+				B6F8A02B1842AF9E002B6D89 /* MainNavigationController.h */,
+				B6F8A02C1842AF9E002B6D89 /* MainNavigationController.m */,
 				B6CA402B1841CF6E004B8E0F /* SeedCoredata.h */,
 				B6CA402C1841CF6E004B8E0F /* SeedCoredata.m */,
 				B6F96F8C1842559300F438B2 /* GirlsViewController.h */,
@@ -343,6 +348,7 @@
 				B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */,
 				B6CA3FDF1841C71F004B8E0F /* VideoPlayer.m in Sources */,
 				B6CEE5E81841391000149B01 /* AppDelegate.m in Sources */,
+				B6F8A02D1842AF9E002B6D89 /* MainNavigationController.m in Sources */,
 				B6D41CCD18413C7500665449 /* SearchViewController.m in Sources */,
 				B6D41CD4184140A200665449 /* Search.m in Sources */,
 				B6CA402D1841CF6E004B8E0F /* SeedCoredata.m in Sources */,

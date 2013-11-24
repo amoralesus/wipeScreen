@@ -7,11 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "SearchViewController.h"
+
 
 #import "Girl.h"
 
-#import "GirlsViewController.h"
+
 
 @implementation AppDelegate
 
@@ -27,16 +27,17 @@
     [self.seedCoredata setupInitialDataset];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    [self customizeAppearance];
-    
-    self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-    //self.window.rootViewController = self.searchViewController;
     
     self.girlsViewController = [[GirlsViewController alloc] initWithNibName:@"GirlsViewController" bundle:nil];
     self.girlsViewController.seedCoredata = self.seedCoredata;
     
-    self.window.rootViewController = self.girlsViewController;
+    self.mainNavigationController = [[MainNavigationController alloc] initWithRootViewController: self.girlsViewController];
+    self.mainNavigationController.navigationBar.hidden = YES;
+    
+    self.window.rootViewController = self.mainNavigationController;
+    [self customizeAppearance];
+    
+    
     
     [self.window makeKeyAndVisible];
     return YES;

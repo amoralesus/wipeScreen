@@ -10,10 +10,12 @@
 #import "GirlViewCell.h"
 #import "Girl.h"
 #import "VideoPlayer.h"
+#import "MainNavigationController.h"
 
 @interface GirlsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+- (IBAction)addClicked:(id)sender;
 
 @end
 
@@ -98,4 +100,8 @@
 
 
 
+- (IBAction)addClicked:(id)sender {    
+    MainNavigationController *navController = (MainNavigationController *) self.navigationController;
+    [navController gotoSearchResultsController];
+}
 @end

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pOF-Et-JAE">
-                    <rect key="frame" x="0.0" y="74" width="320" height="494"/>
+                    <rect key="frame" x="0.0" y="25" width="320" height="543"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -25,26 +25,29 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw7-fk-C0E">
-                    <rect key="frame" x="254" y="36" width="46" height="30"/>
+                    <rect key="frame" x="254" y="20" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Add ...">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="addClicked:" destination="-1" eventType="touchUpInside" id="fl2-lj-0xW"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="pOF-Et-JAE" secondAttribute="trailing" id="69l-a7-hVl"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pw7-fk-C0E" secondAttribute="trailing" constant="20" id="9LH-SZ-C0H"/>
-                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="8" id="ApC-Ja-7cK"/>
+                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="-25" id="ApC-Ja-7cK"/>
                 <constraint firstAttribute="trailing" secondItem="pOF-Et-JAE" secondAttribute="trailing" id="GEM-Nh-fmf"/>
-                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="8" id="Gv9-CK-D3W"/>
+                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="-25" id="Gv9-CK-D3W"/>
                 <constraint firstItem="pOF-Et-JAE" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Uaz-A1-a0Z"/>
-                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="8" id="got-Uj-KJt"/>
-                <constraint firstItem="Pw7-fk-C0E" firstAttribute="top" secondItem="1" secondAttribute="top" constant="36" id="i4A-4w-GUn"/>
+                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="-25" id="got-Uj-KJt"/>
+                <constraint firstItem="Pw7-fk-C0E" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="i4A-4w-GUn"/>
                 <constraint firstAttribute="trailing" secondItem="Pw7-fk-C0E" secondAttribute="trailing" constant="20" id="idp-Xt-zEM"/>
                 <constraint firstAttribute="bottom" secondItem="pOF-Et-JAE" secondAttribute="bottom" id="jtP-AA-og9"/>
-                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="8" id="qb1-Z7-s4J"/>
+                <constraint firstItem="pOF-Et-JAE" firstAttribute="top" secondItem="Pw7-fk-C0E" secondAttribute="bottom" constant="-25" id="qb1-Z7-s4J"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

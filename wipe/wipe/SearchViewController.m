@@ -14,11 +14,15 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 #import "SearchResultCell.h"
 #import "VideoPlayer.h"
 
+#import "MainNavigationController.h"
+
+
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+- (IBAction)doneClicked:(id)sender;
 
 @end
 
@@ -148,4 +152,10 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 
+- (IBAction)doneClicked:(id)sender {
+    MainNavigationController *navController = (MainNavigationController *) self.navigationController;
+    
+    [navController popToRootViewControllerAnimated:YES];
+    
+}
 @end
