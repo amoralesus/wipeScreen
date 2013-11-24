@@ -14,11 +14,6 @@
     NSManagedObjectContext * _context;
 }
 
-+(void) setupInitialDatasetForContext:(NSManagedObjectContext *)context; {
-    SeedCoredata *seed = [[SeedCoredata alloc] initWithContext:context];
-    [seed setupInitialDatasetForContext:context];
-    
-}
 
 -(id) initWithContext:(NSManagedObjectContext *)theContext {
     self = [super init];
@@ -26,7 +21,7 @@
     return self;
 }
 
--(void) setupInitialDatasetForContext:(NSManagedObjectContext *)context; {
+-(void) setupInitialDataset {
     NSArray *keys = [NSArray arrayWithObjects:@"entityName", @"primaryKeyName", @"name", @"girlDescription", @"product_code", nil];
     NSArray *objects = [NSArray arrayWithObjects:@"Girl", @"product_code", @"Bethany", @"Let me wipe your screen clean", @"com.wipemyscreenclean.bethany", nil];
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
@@ -38,6 +33,7 @@
     
 }
 
+#pragma mark Find or Create
 // NSArray *keys = [NSArray arrayWithObjects:@"entityName", @"primaryKeyName", @"name", @"girlDescription", @"product_code", nil];
 // NSArray *objects = [NSArray arrayWithObjects:@"Girl", @"product_code", @"Bethany", @"Let me wipe your screen clean", @"com.wipemyscreenclean.bethany", nil];
 // NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objectsforKeys:keys];
@@ -58,11 +54,15 @@
     
     NSString * primaryKeyName = [dict valueForKey:@"primaryKeyName"];
     NSString * primaryKeyValue = [dict valueForKey:primaryKeyName];
-    NSPredicate *p=[NSPredicate predicateWithFormat:@"%@ == %@", primaryKeyName, primaryKeyValue];
+    NSLog(@"PrimaryKeyName: '%@'", primaryKeyName);
+    NSLog(@"PrimaryKeyValue: '%@'", primaryKeyValue);
+    // had to put %K for the key name, and take out the single quotes out of %@ for this to work
+    NSPredicate *p=[NSPredicate predicateWithFormat:@"%K = %@", primaryKeyName, primaryKeyValue];
     [fetch setPredicate:p];
     
     NSError *fetchError;
     NSArray *fetchedRecords=[_context executeFetchRequest:fetch error:&fetchError];
+    NSLog(@"records %lu", (unsigned long)[fetchedRecords count]);
     return fetchedRecords;
 }
 
@@ -78,15 +78,7 @@
 
 }
 
--(double) recordsInCoredata {
-    NSError * error;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Girl" inManagedObjectContext:_context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [_context executeFetchRequest:fetchRequest error:&error];
-    return [fetchedObjects count];
-    
-}
+# pragma mark Copy Files to Documents Directory
 
 -(void) copyDemoFilesForDict:(NSDictionary *) dict {
     [self copyFile:[dict valueForKey:@"product_code"] ofType: @"mov"];
@@ -108,6 +100,18 @@
         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:filename ofType:fileType];
         [fileManager copyItemAtPath:resourcePath toPath:txtPath error:&error];
     }
+}
+
+# pragma mark All Girl Records
+
+-(NSArray *) allGirlRecords {
+    NSError * error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Girl" inManagedObjectContext:_context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [_context executeFetchRequest:fetchRequest error:&error];
+    return fetchedObjects;
+    
 }
 
 @end

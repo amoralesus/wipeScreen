@@ -11,9 +11,11 @@
 
 @interface SeedCoredata : NSObject
 
-+(void) setupInitialDatasetForContext:(NSManagedObjectContext *)context;
 
 -(id) initWithContext:(NSManagedObjectContext *)theContext;
 
+-(void) setupInitialDataset;
+
+-(NSArray *) allGirlRecords;
 
 @end

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "SeedCoredata.h"
 
 @class SearchViewController;
+@class GirlsViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,6 +19,9 @@
 
 @property (strong, nonatomic) SearchViewController *searchViewController;
 
+@property (strong, nonatomic) GirlsViewController *girlsViewController;
+
+@property (strong, nonatomic) SeedCoredata *seedCoredata;
 
 #pragma mark Core Data
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

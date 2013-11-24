@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60E3EAB184263C30037F32A /* GirlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60E3EAA184263C30037F32A /* GirlViewCell.xib */; };
 		B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */; };
 		B6CA3FDF1841C71F004B8E0F /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */; };
 		B6CA3FE11841C802004B8E0F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CA3FE01841C802004B8E0F /* MediaPlayer.framework */; };
@@ -32,6 +33,9 @@
 		B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CDB184191B900665449 /* SearchResultCell.m */; };
 		B6F96F8618423C6300F438B2 /* com.wipemyscreenclean.bethany.mov in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */; };
 		B6F96F8818423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */; };
+		B6F96F8F1842559300F438B2 /* GirlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F96F8D1842559300F438B2 /* GirlsViewController.m */; };
+		B6F96F901842559300F438B2 /* GirlsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8E1842559300F438B2 /* GirlsViewController.xib */; };
+		B6F96FDF18425C3C00F438B2 /* GirlViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F96FDE18425C3C00F438B2 /* GirlViewCell.m */; };
 		CD542448370D458CA370DDA9 /* libPods-wipe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 598804BBDEE1465EA8A01110 /* libPods-wipe.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		598804BBDEE1465EA8A01110 /* libPods-wipe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wipe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60E3EAA184263C30037F32A /* GirlViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GirlViewCell.xib; sourceTree = "<group>"; };
 		B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultsFoundCell.xib; sourceTree = "<group>"; };
 		B6CA3FDD1841C71F004B8E0F /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
 		B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
@@ -82,6 +87,11 @@
 		B6D41CDB184191B900665449 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
 		B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = com.wipemyscreenclean.bethany.mov; sourceTree = "<group>"; };
 		B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = com.wipemyscreenclean.bethany.jpg; sourceTree = "<group>"; };
+		B6F96F8C1842559300F438B2 /* GirlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GirlsViewController.h; sourceTree = "<group>"; };
+		B6F96F8D1842559300F438B2 /* GirlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GirlsViewController.m; sourceTree = "<group>"; };
+		B6F96F8E1842559300F438B2 /* GirlsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GirlsViewController.xib; sourceTree = "<group>"; };
+		B6F96FDD18425C3C00F438B2 /* GirlViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GirlViewCell.h; sourceTree = "<group>"; };
+		B6F96FDE18425C3C00F438B2 /* GirlViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GirlViewCell.m; sourceTree = "<group>"; };
 		E7CEC4E331464C27961E3925 /* Pods-wipe.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wipe.xcconfig"; path = "Pods/Pods-wipe.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +162,12 @@
 				B6CEE5E71841391000149B01 /* AppDelegate.m */,
 				B6CA402B1841CF6E004B8E0F /* SeedCoredata.h */,
 				B6CA402C1841CF6E004B8E0F /* SeedCoredata.m */,
+				B6F96F8C1842559300F438B2 /* GirlsViewController.h */,
+				B6F96F8D1842559300F438B2 /* GirlsViewController.m */,
+				B6F96F8E1842559300F438B2 /* GirlsViewController.xib */,
+				B6F96FDD18425C3C00F438B2 /* GirlViewCell.h */,
+				B6F96FDE18425C3C00F438B2 /* GirlViewCell.m */,
+				B60E3EAA184263C30037F32A /* GirlViewCell.xib */,
 				B6CA40251841CC5C004B8E0F /* coredata.xcdatamodeld */,
 				B6CA40281841CDD7004B8E0F /* Girl.h */,
 				B6CA40291841CDD7004B8E0F /* Girl.m */,
@@ -265,8 +281,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F96F901842559300F438B2 /* GirlsViewController.xib in Resources */,
 				B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */,
 				B6F96F8818423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg in Resources */,
+				B60E3EAB184263C30037F32A /* GirlViewCell.xib in Resources */,
 				B6CEE5F01841391000149B01 /* Images.xcassets in Resources */,
 				B6D41CD618418F1F00665449 /* SearchResultCell.xib in Resources */,
 				B6CEE5E21841391000149B01 /* InfoPlist.strings in Resources */,
@@ -328,7 +346,9 @@
 				B6D41CCD18413C7500665449 /* SearchViewController.m in Sources */,
 				B6D41CD4184140A200665449 /* Search.m in Sources */,
 				B6CA402D1841CF6E004B8E0F /* SeedCoredata.m in Sources */,
+				B6F96FDF18425C3C00F438B2 /* GirlViewCell.m in Sources */,
 				B6D41CD118413FEE00665449 /* SearchResult.m in Sources */,
+				B6F96F8F1842559300F438B2 /* GirlsViewController.m in Sources */,
 				B6CEE5E41841391000149B01 /* main.m in Sources */,
 				B6CA40271841CC5C004B8E0F /* coredata.xcdatamodeld in Sources */,
 				B6CA402A1841CDD7004B8E0F /* Girl.m in Sources */,

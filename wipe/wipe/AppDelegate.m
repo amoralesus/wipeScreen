@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 #import "SearchViewController.h"
-#import "SeedCoredata.h"
+
 #import "Girl.h"
+
+#import "GirlsViewController.h"
 
 @implementation AppDelegate
 
@@ -20,14 +22,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [SeedCoredata setupInitialDatasetForContext:(NSManagedObjectContext *)[self managedObjectContext]];
+    self.seedCoredata = [[SeedCoredata alloc] initWithContext:[self managedObjectContext]];
+    
+    [self.seedCoredata setupInitialDataset];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     [self customizeAppearance];
     
-    self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-    self.window.rootViewController = self.searchViewController;
+    //self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+    //self.window.rootViewController = self.searchViewController;
+    
+    self.girlsViewController = [[GirlsViewController alloc] initWithNibName:@"GirlsViewController" bundle:nil];
+    self.girlsViewController.seedCoredata = self.seedCoredata;
+    
+    self.window.rootViewController = self.girlsViewController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
