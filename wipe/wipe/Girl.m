@@ -22,7 +22,7 @@
 }
 
 -(NSString *) productVideo {
-    NSString * string = @"the path to the video";
+    NSString * string = [NSString stringWithFormat:@"%@.mov", self.product_code];
     return string;
 }
 

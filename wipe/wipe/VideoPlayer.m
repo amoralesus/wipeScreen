@@ -13,11 +13,6 @@
     MPMoviePlayerController * _moviePlayerController;
 }
 
-+(void) playMovie:(NSString *) fileBasename  inView:(UIView *)theView{
-    
-    VideoPlayer * player = [[VideoPlayer alloc] init];
-    [player playMovie: fileBasename inView:theView];
-}
 
 -(void) playMovie:(NSString *) fileBasename inView:(UIView *) view {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -30,8 +25,9 @@
         
         // create movie player
         _moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        
         _moviePlayerController.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+        
+        [self registerObservers];
         
         [view addSubview:_moviePlayerController.view];
         
@@ -45,4 +41,37 @@
         NSLog(@"File path wrong");
     }
 }
+
+#pragma mark Observers
+
+-(void) registerObservers {
+    // add observers to stop the movie
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish:) name: MPMoviePlayerPlaybackDidFinishNotification object:_moviePlayerController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(MPMoviePlayerDidExitFullscreen:) name:MPMoviePlayerDidExitFullscreenNotification object:_moviePlayerController];
+    
+}
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    MPMoviePlayerController *player = [notification object];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:MPMoviePlayerPlaybackDidFinishNotification
+     object:player];
+    
+    if ([player
+         respondsToSelector:@selector(setFullscreen:animated:)])
+    {
+        [player.view removeFromSuperview];
+    }
+}
+
+- (void)MPMoviePlayerDidExitFullscreen:(NSNotification *)notification
+{
+    MPMoviePlayerController *player = [notification object];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerDidExitFullscreenNotification object:player];
+    [player stop];
+    [player.view removeFromSuperview];
+}
+
 @end

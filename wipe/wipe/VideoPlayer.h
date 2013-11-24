@@ -10,6 +10,6 @@
 
 @interface VideoPlayer : NSObject
 
-+(void) playMovie:(NSString *) fileBasename inView: (UIView *) theView;
+-(void) playMovie:(NSString *) fileBasename inView:(UIView *) view;
 
 @end

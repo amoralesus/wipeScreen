@@ -33,7 +33,6 @@
     self.descriptionLabel.text = girl.girlDescription;
     
     NSString * imageName = [NSString stringWithFormat:@"%@.jpg", girl.product_code];
-    NSLog(@"%@", imageName);
     
     NSString *imageFile = [[self documentsDirectory] stringByAppendingPathComponent:imageName];
     

@@ -9,6 +9,7 @@
 #import "GirlsViewController.h"
 #import "GirlViewCell.h"
 #import "Girl.h"
+#import "VideoPlayer.h"
 
 @interface GirlsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,6 +19,7 @@
 
 @implementation GirlsViewController {
     NSArray * _girlsRecords;
+    VideoPlayer *_videoPlayer;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -71,6 +73,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // here we play movie
+    
+    NSString * movieFileBasename = [_girlsRecords[indexPath.row] productVideo];
+
+    [self playMovie: movieFileBasename];
+    
+}
+
+-(void) playMovie:(NSString *) filename {
+    _videoPlayer = [[VideoPlayer alloc] init];
+    [_videoPlayer playMovie:filename inView:self.view];
+
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
