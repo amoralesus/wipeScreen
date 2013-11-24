@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */; };
 		B6CEE5D81841391000149B01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5D71841391000149B01 /* Foundation.framework */; };
 		B6CEE5DA1841391000149B01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5D91841391000149B01 /* CoreGraphics.framework */; };
 		B6CEE5DC1841391000149B01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5DB1841391000149B01 /* UIKit.framework */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		598804BBDEE1465EA8A01110 /* libPods-wipe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wipe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultsFoundCell.xib; sourceTree = "<group>"; };
 		B6CEE5D41841391000149B01 /* wipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CEE5D71841391000149B01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6CEE5D91841391000149B01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +138,7 @@
 				B6D41CDA184191B900665449 /* SearchResultCell.h */,
 				B6D41CDB184191B900665449 /* SearchResultCell.m */,
 				B6D41CD518418F1F00665449 /* SearchResultCell.xib */,
+				B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */,
 				B6D41CD2184140A200665449 /* Search.h */,
 				B6D41CD3184140A200665449 /* Search.m */,
 				B6D41CCF18413FEE00665449 /* SearchResult.h */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */,
 				B6CEE5F01841391000149B01 /* Images.xcassets in Resources */,
 				B6D41CD618418F1F00665449 /* SearchResultCell.xib in Resources */,
 				B6CEE5E21841391000149B01 /* InfoPlist.strings in Resources */,

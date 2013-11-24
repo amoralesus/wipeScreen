@@ -13,7 +13,6 @@
 
 -(NSString *) productURL {
     NSString * url = [NSString stringWithFormat: @"http://personal.amorales.us/girls/1/avatar/?product_code=%@", self.productCode];
-    NSLog(@"%@",url);
     return url;
 }
 

@@ -27,16 +27,20 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hWG-zJ-uNV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hWG-zJ-uNV">
                         <rect key="frame" x="15" y="10" width="60" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="avatar" destination="hWG-zJ-uNV" id="pby-zB-yPQ"/>
                 <outlet property="descriptionLabel" destination="2hq-nU-zC4" id="oj3-C8-JnT"/>
                 <outlet property="nameLabel" destination="Gfb-Y6-QJr" id="wqt-kO-pem"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Placeholder" width="60" height="60"/>
+    </resources>
 </document>

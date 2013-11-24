@@ -7,6 +7,7 @@
 //
 
 #import "SearchResultCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @implementation SearchResultCell
 
@@ -24,6 +25,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+
+- (void)configureForSearchResult:(SearchResult *)searchResult {
+    self.nameLabel.text = searchResult.name;
+    
+    self.descriptionLabel.text = searchResult.description;
+    
+    [self.avatar setImageWithURL:[NSURL URLWithString:[searchResult productURL]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    
+    
 }
 
 @end

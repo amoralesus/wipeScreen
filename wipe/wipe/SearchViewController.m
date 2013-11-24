@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 wipemyscreenclean.com. All rights reserved.
 //
 
+static NSString * const NothingFoundCellIndentifier = @"NoResultsFoundCell";
+static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
+
 #import "SearchViewController.h"
 #import "Search.h"
 #import "SearchResultCell.h"
@@ -36,13 +39,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // this is needed to make the keyboard go away when clicking on table
+    UITapGestureRecognizer *tapgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tableClicked)];
+    [self.tableView addGestureRecognizer:tapgesture];
+    
 
     // move the table view down a bit to allow the first rows to show under the search bar
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     self.tableView.rowHeight = 80;
     
-    UINib *cellNib = [UINib nibWithNibName:@"SearchResultCell" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"SearchResultCell"];
+    UINib *cellNib = [UINib nibWithNibName:SearchResultCellIdentifier bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:SearchResultCellIdentifier];
+    
+    cellNib = [UINib nibWithNibName:NothingFoundCellIndentifier bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:NothingFoundCellIndentifier];
+    
+}
+
+-(void)tableClicked
+{
+    
+    [self.searchBar resignFirstResponder];
     
 }
 
@@ -53,9 +71,7 @@
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    NSLog(@"which object%@", _searchResults);
-    
+        
     if (_searchResults == nil) {
         return 0;
     }
@@ -69,17 +85,17 @@
 
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell"];
+    
     if([_searchResults count] == 0) {
-        cell.nameLabel.text = @"Nothing";
-        cell.detailTextLabel.text = @"nothing";
+        return [tableView dequeueReusableCellWithIdentifier: NothingFoundCellIndentifier forIndexPath:indexPath];
     }
     else {
+        SearchResultCell * cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier];
         SearchResult *searchResult = _searchResults[indexPath.row];
-        cell.nameLabel.text = searchResult.name;
-        cell.descriptionLabel.text = searchResult.description;
+        [cell configureForSearchResult:searchResult];
+        return cell;
     }
-    return cell;
+    
 }
 
 #pragma mark - UISearchBarDelegate
@@ -117,7 +133,6 @@
             return;
         }
         _searchResults = [search parseDictionaryAndSetResults:dictionary];
-        NSLog(@"returns %d", [_searchResults count]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             _isLoading = NO;
