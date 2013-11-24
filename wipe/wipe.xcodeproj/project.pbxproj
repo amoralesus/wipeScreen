@@ -24,14 +24,14 @@
 		B6CEE5F71841391000149B01 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5F61841391000149B01 /* XCTest.framework */; };
 		B6CEE5F81841391000149B01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5D71841391000149B01 /* Foundation.framework */; };
 		B6CEE5F91841391000149B01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5DB1841391000149B01 /* UIKit.framework */; };
-		B6CEE6011841391000149B01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6CEE5FF1841391000149B01 /* InfoPlist.strings */; };
-		B6CEE6031841391000149B01 /* wipeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CEE6021841391000149B01 /* wipeTests.m */; };
 		B6D41CCD18413C7500665449 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CCB18413C7500665449 /* SearchViewController.m */; };
 		B6D41CCE18413C7500665449 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D41CCC18413C7500665449 /* SearchViewController.xib */; };
 		B6D41CD118413FEE00665449 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CD018413FEE00665449 /* SearchResult.m */; };
 		B6D41CD4184140A200665449 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CD3184140A200665449 /* Search.m */; };
 		B6D41CD618418F1F00665449 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D41CD518418F1F00665449 /* SearchResultCell.xib */; };
 		B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CDB184191B900665449 /* SearchResultCell.m */; };
+		B6F96F8618423C6300F438B2 /* com.wipemyscreenclean.bethany.mov in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */; };
+		B6F96F8818423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */; };
 		CD542448370D458CA370DDA9 /* libPods-wipe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 598804BBDEE1465EA8A01110 /* libPods-wipe.a */; };
 /* End PBXBuildFile section */
 
@@ -70,9 +70,6 @@
 		B6CEE5EF1841391000149B01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B6CEE5F51841391000149B01 /* wipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CEE5F61841391000149B01 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B6CEE5FE1841391000149B01 /* wipeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "wipeTests-Info.plist"; sourceTree = "<group>"; };
-		B6CEE6001841391000149B01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B6CEE6021841391000149B01 /* wipeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wipeTests.m; sourceTree = "<group>"; };
 		B6D41CCA18413C7500665449 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		B6D41CCB18413C7500665449 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		B6D41CCC18413C7500665449 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -83,6 +80,8 @@
 		B6D41CD518418F1F00665449 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		B6D41CDA184191B900665449 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		B6D41CDB184191B900665449 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = com.wipemyscreenclean.bethany.mov; sourceTree = "<group>"; };
+		B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = com.wipemyscreenclean.bethany.jpg; sourceTree = "<group>"; };
 		E7CEC4E331464C27961E3925 /* Pods-wipe.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wipe.xcconfig"; path = "Pods/Pods-wipe.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				B6CEE5DD1841391000149B01 /* wipe */,
-				B6CEE5FC1841391000149B01 /* wipeTests */,
 				B6CEE5D61841391000149B01 /* Frameworks */,
 				B6CEE5D51841391000149B01 /* Products */,
 				E7CEC4E331464C27961E3925 /* Pods-wipe.xcconfig */,
@@ -159,6 +157,7 @@
 				B6CA40291841CDD7004B8E0F /* Girl.m */,
 				B6D41CCA18413C7500665449 /* SearchViewController.h */,
 				B6D41CCB18413C7500665449 /* SearchViewController.m */,
+				B6D41CCC18413C7500665449 /* SearchViewController.xib */,
 				B6CA3FDD1841C71F004B8E0F /* VideoPlayer.h */,
 				B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */,
 				B6D41CDA184191B900665449 /* SearchResultCell.h */,
@@ -169,7 +168,6 @@
 				B6D41CD3184140A200665449 /* Search.m */,
 				B6D41CCF18413FEE00665449 /* SearchResult.h */,
 				B6D41CD018413FEE00665449 /* SearchResult.m */,
-				B6D41CCC18413C7500665449 /* SearchViewController.xib */,
 				B6CEE5EF1841391000149B01 /* Images.xcassets */,
 				B6CEE5DE1841391000149B01 /* Supporting Files */,
 			);
@@ -179,28 +177,12 @@
 		B6CEE5DE1841391000149B01 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */,
+				B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */,
 				B6CEE5DF1841391000149B01 /* wipe-Info.plist */,
 				B6CEE5E01841391000149B01 /* InfoPlist.strings */,
 				B6CEE5E31841391000149B01 /* main.m */,
 				B6CEE5E51841391000149B01 /* wipe-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B6CEE5FC1841391000149B01 /* wipeTests */ = {
-			isa = PBXGroup;
-			children = (
-				B6CEE6021841391000149B01 /* wipeTests.m */,
-				B6CEE5FD1841391000149B01 /* Supporting Files */,
-			);
-			path = wipeTests;
-			sourceTree = "<group>";
-		};
-		B6CEE5FD1841391000149B01 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B6CEE5FE1841391000149B01 /* wipeTests-Info.plist */,
-				B6CEE5FF1841391000149B01 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -284,10 +266,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */,
+				B6F96F8818423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg in Resources */,
 				B6CEE5F01841391000149B01 /* Images.xcassets in Resources */,
 				B6D41CD618418F1F00665449 /* SearchResultCell.xib in Resources */,
 				B6CEE5E21841391000149B01 /* InfoPlist.strings in Resources */,
 				B6D41CCE18413C7500665449 /* SearchViewController.xib in Resources */,
+				B6F96F8618423C6300F438B2 /* com.wipemyscreenclean.bethany.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +279,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6CEE6011841391000149B01 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +339,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6CEE6031841391000149B01 /* wipeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,14 +357,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B6CEE5E11841391000149B01 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B6CEE5FF1841391000149B01 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6CEE6001841391000149B01 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
