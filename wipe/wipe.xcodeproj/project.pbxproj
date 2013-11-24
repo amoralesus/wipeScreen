@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */; };
+		B6CA3FDF1841C71F004B8E0F /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */; };
+		B6CA3FE11841C802004B8E0F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CA3FE01841C802004B8E0F /* MediaPlayer.framework */; };
+		B6CA40241841CC35004B8E0F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CA40231841CC35004B8E0F /* CoreData.framework */; };
+		B6CA40271841CC5C004B8E0F /* coredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6CA40251841CC5C004B8E0F /* coredata.xcdatamodeld */; };
+		B6CA402A1841CDD7004B8E0F /* Girl.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA40291841CDD7004B8E0F /* Girl.m */; };
+		B6CA402D1841CF6E004B8E0F /* SeedCoredata.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA402C1841CF6E004B8E0F /* SeedCoredata.m */; };
 		B6CEE5D81841391000149B01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5D71841391000149B01 /* Foundation.framework */; };
 		B6CEE5DA1841391000149B01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5D91841391000149B01 /* CoreGraphics.framework */; };
 		B6CEE5DC1841391000149B01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CEE5DB1841391000149B01 /* UIKit.framework */; };
@@ -42,6 +48,15 @@
 /* Begin PBXFileReference section */
 		598804BBDEE1465EA8A01110 /* libPods-wipe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wipe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultsFoundCell.xib; sourceTree = "<group>"; };
+		B6CA3FDD1841C71F004B8E0F /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
+		B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
+		B6CA3FE01841C802004B8E0F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		B6CA40231841CC35004B8E0F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B6CA40261841CC5C004B8E0F /* coredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata.xcdatamodel; sourceTree = "<group>"; };
+		B6CA40281841CDD7004B8E0F /* Girl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Girl.h; sourceTree = "<group>"; };
+		B6CA40291841CDD7004B8E0F /* Girl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Girl.m; sourceTree = "<group>"; };
+		B6CA402B1841CF6E004B8E0F /* SeedCoredata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeedCoredata.h; sourceTree = "<group>"; };
+		B6CA402C1841CF6E004B8E0F /* SeedCoredata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeedCoredata.m; sourceTree = "<group>"; };
 		B6CEE5D41841391000149B01 /* wipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CEE5D71841391000149B01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6CEE5D91841391000149B01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CA40241841CC35004B8E0F /* CoreData.framework in Frameworks */,
+				B6CA3FE11841C802004B8E0F /* MediaPlayer.framework in Frameworks */,
 				B6CEE5DA1841391000149B01 /* CoreGraphics.framework in Frameworks */,
 				B6CEE5DC1841391000149B01 /* UIKit.framework in Frameworks */,
 				B6CEE5D81841391000149B01 /* Foundation.framework in Frameworks */,
@@ -119,6 +136,8 @@
 		B6CEE5D61841391000149B01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6CA40231841CC35004B8E0F /* CoreData.framework */,
+				B6CA3FE01841C802004B8E0F /* MediaPlayer.framework */,
 				B6CEE5D71841391000149B01 /* Foundation.framework */,
 				B6CEE5D91841391000149B01 /* CoreGraphics.framework */,
 				B6CEE5DB1841391000149B01 /* UIKit.framework */,
@@ -133,8 +152,15 @@
 			children = (
 				B6CEE5E61841391000149B01 /* AppDelegate.h */,
 				B6CEE5E71841391000149B01 /* AppDelegate.m */,
+				B6CA402B1841CF6E004B8E0F /* SeedCoredata.h */,
+				B6CA402C1841CF6E004B8E0F /* SeedCoredata.m */,
+				B6CA40251841CC5C004B8E0F /* coredata.xcdatamodeld */,
+				B6CA40281841CDD7004B8E0F /* Girl.h */,
+				B6CA40291841CDD7004B8E0F /* Girl.m */,
 				B6D41CCA18413C7500665449 /* SearchViewController.h */,
 				B6D41CCB18413C7500665449 /* SearchViewController.m */,
+				B6CA3FDD1841C71F004B8E0F /* VideoPlayer.h */,
+				B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */,
 				B6D41CDA184191B900665449 /* SearchResultCell.h */,
 				B6D41CDB184191B900665449 /* SearchResultCell.m */,
 				B6D41CD518418F1F00665449 /* SearchResultCell.xib */,
@@ -314,11 +340,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */,
+				B6CA3FDF1841C71F004B8E0F /* VideoPlayer.m in Sources */,
 				B6CEE5E81841391000149B01 /* AppDelegate.m in Sources */,
 				B6D41CCD18413C7500665449 /* SearchViewController.m in Sources */,
 				B6D41CD4184140A200665449 /* Search.m in Sources */,
+				B6CA402D1841CF6E004B8E0F /* SeedCoredata.m in Sources */,
 				B6D41CD118413FEE00665449 /* SearchResult.m in Sources */,
 				B6CEE5E41841391000149B01 /* main.m in Sources */,
+				B6CA40271841CC5C004B8E0F /* coredata.xcdatamodeld in Sources */,
+				B6CA402A1841CDD7004B8E0F /* Girl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +563,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B6CA40251841CC5C004B8E0F /* coredata.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B6CA40261841CC5C004B8E0F /* coredata.xcdatamodel */,
+			);
+			currentVersion = B6CA40261841CC5C004B8E0F /* coredata.xcdatamodel */;
+			path = coredata.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B6CEE5CC1841391000149B01 /* Project object */;
 }

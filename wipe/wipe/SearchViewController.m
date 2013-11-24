@@ -12,6 +12,7 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 #import "SearchViewController.h"
 #import "Search.h"
 #import "SearchResultCell.h"
+#import "VideoPlayer.h"
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
