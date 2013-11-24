@@ -10,54 +10,7 @@
 
 
 
-@implementation Search {
-    BOOL _isLoading;
-    NSMutableArray * _searchResults;
-    UITableView * _tableView;
-}
-
--(id) initWithCollection:(NSMutableArray *)array andTableView:(UITableView *)view {
-    self = [super init];
-    _searchResults = array;
-    _tableView = view;
-    return self;
-}
-
--(void) runSearchFor:(NSString *)string {
-    _isLoading = YES;
-    [_tableView reloadData];
-    _searchResults = [NSMutableArray arrayWithCapacity:10];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        NSURL *url = [self urlWithSearchText:string];
-        NSString *jsonString = [self performStoreRequestWithURL:url];
-        
-        if (jsonString == nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showNetworkError];
-            });
-            return;
-        }
-        NSDictionary *dictionary = [self parseJSON:jsonString];
-        
-        if (dictionary == nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showNetworkError];
-            });
-            return;
-        }
-        
-        [self parseDictionaryAndSetResults:dictionary];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _isLoading = NO;
-            NSLog(@"%d", [_searchResults count]);
-            [_tableView reloadData];
-        });
-        
-    });
-
-}
+@implementation Search 
 
 - (NSURL *)urlWithSearchText:(NSString *)searchText {
     NSString *escapedSearchText = [searchText stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
@@ -98,7 +51,9 @@
     return resultObject;
 }
 
-- (void)parseDictionaryAndSetResults:(NSDictionary *)dictionary {
+- (NSMutableArray *)parseDictionaryAndSetResults:(NSDictionary *)dictionary {
+    
+    NSMutableArray * results = [NSMutableArray arrayWithObjects: nil];
     
     NSArray *array = dictionary[@"results"];
     if (array == nil) {
@@ -111,9 +66,10 @@
         searchResult.name = resultDict[@"name"];
         searchResult.description = resultDict[@"description"];
         searchResult.productCode = resultDict[@"product_code"];
-        [_searchResults addObject:searchResult];
+        [results addObject:searchResult];
         }
     }
+    return results;
 }
 
 @end

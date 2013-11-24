@@ -11,7 +11,9 @@
 @interface SearchResult : NSObject
 
 @property (nonatomic, copy) NSString *name;
+
 @property (nonatomic, copy) NSString *description;
+
 @property (nonatomic, copy) NSString *productCode;
 
 

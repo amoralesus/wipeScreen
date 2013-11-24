@@ -10,11 +10,18 @@
 #import <UIKit/UIKit.h>
 #import "SearchResult.h"
 
+
 @interface Search : NSObject
 
 
--(id) initWithCollection:(NSMutableArray *) array andTableView: (UITableView *) view;
+- (NSURL *)urlWithSearchText:(NSString *)searchText;
 
--(void) runSearchFor:(NSString *) string;
+- (NSString *)performStoreRequestWithURL:(NSURL *)url ;
+
+- (void)showNetworkError;
+
+- (NSDictionary *)parseJSON:(NSString *)jsonString;
+
+- (NSMutableArray *)parseDictionaryAndSetResults:(NSDictionary *)dictionary;
 
 @end
