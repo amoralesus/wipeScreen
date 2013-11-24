@@ -30,7 +30,7 @@
 
     [self customizeAppearance];
     
-    //self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+    self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
     //self.window.rootViewController = self.searchViewController;
     
     self.girlsViewController = [[GirlsViewController alloc] initWithNibName:@"GirlsViewController" bundle:nil];
