@@ -15,6 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    [self customizeAppearance];
     
     self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
     self.window.rootViewController = self.searchViewController;
@@ -48,5 +49,18 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)customizeAppearance {
+    
+    double red = 254;
+    double green = 119;
+    double blue = 164;
+    
+    UIColor *barTintColor = [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1.0f];
+    [[UISearchBar appearance] setBarTintColor:barTintColor];
+    
+    self.window.tintColor = [UIColor colorWithRed:(red/2.0f)/255.0f green:(green/2.0f)/255.0f blue:(blue/2.0f)/255.0f alpha:1.0f];
+}
+
 
 @end

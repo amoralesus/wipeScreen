@@ -141,4 +141,10 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     });
 }
 
+//trick to get the ugly white bar at the top
+- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
+    return UIBarPositionTopAttached;
+}
+
+
 @end
