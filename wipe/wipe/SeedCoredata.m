@@ -91,8 +91,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    NSMutableString *fileBaseName = [NSMutableString stringWithString:filename];
-    [fileBaseName appendString:fileType];
+    NSString *fileBaseName = [NSString stringWithFormat:@"%@.%@",filename, fileType];
     
     NSString *txtPath = [documentsDirectory stringByAppendingPathComponent: fileBaseName];
     

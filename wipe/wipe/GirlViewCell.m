@@ -32,9 +32,22 @@
     
     self.descriptionLabel.text = girl.girlDescription;
     
-    //[self.avatar setImageWithURL:[NSURL URLWithString:[searchResult productURL]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    NSString * imageName = [NSString stringWithFormat:@"%@.jpg", girl.product_code];
+    NSLog(@"%@", imageName);
+    
+    NSString *imageFile = [[self documentsDirectory] stringByAppendingPathComponent:imageName];
+    
+    self.avatar.image = [UIImage imageWithData:[NSData dataWithContentsOfFile:imageFile]];
     
     
+}
+
+
+
+-(NSString *) documentsDirectory {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [paths objectAtIndex:0];
+    return documentsDir;
 }
 
 -(void) awakeFromNib {

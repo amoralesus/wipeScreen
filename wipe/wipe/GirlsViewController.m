@@ -39,6 +39,9 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"GirlViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"GirlViewCell"];
+    
+    self.tableView.rowHeight = 80;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +65,23 @@
     return cell;
     
 }
+
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([_girlsRecords count] == 0) {
+        return nil;
+    } else {
+        return indexPath;
+    }
+}
+
 
 
 @end
