@@ -34,6 +34,11 @@
     
     //[self.avatar setImageWithURL:[NSURL URLWithString:[searchResult productURL]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     
+    NSURL *url = [NSURL URLWithString:[searchResult productURL]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    [self.avatar setImage:image];
+    
     
 }
 
