@@ -7,7 +7,6 @@
 //
 
 #import "SearchResultCell.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @implementation SearchResultCell
 
@@ -33,7 +32,7 @@
     
     self.descriptionLabel.text = searchResult.description;
     
-    [self.avatar setImageWithURL:[NSURL URLWithString:[searchResult productURL]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    //[self.avatar setImageWithURL:[NSURL URLWithString:[searchResult productURL]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     
     
 }
