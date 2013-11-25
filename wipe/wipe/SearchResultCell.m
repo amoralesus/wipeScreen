@@ -8,6 +8,9 @@
 
 #import "SearchResultCell.h"
 
+#import "WipeIAPHelper.h"
+
+
 @implementation SearchResultCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -27,19 +30,34 @@
 }
 
 
+- (IBAction)buyButtonPressed:(id)sender {
+    
+}
+
 - (void)configureForSearchResult:(SearchResult *)searchResult {
     self.nameLabel.text = searchResult.name;
     
     self.descriptionLabel.text = searchResult.description;
-    
-    //[self.avatar setImageWithURL:[NSURL URLWithString:[searchResult productURL]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     
     NSURL *url = [NSURL URLWithString:[searchResult productURL]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
     [self.avatar setImage:image];
     
-    
+    if ([[WipeIAPHelper sharedInstance] productPurchased:searchResult.productCode]) {
+        [self.buyButton setEnabled:NO];
+        [self.buyButton setTitle:@"√" forState:UIControlStateDisabled];
+
+    }
+    else {
+        // buy button is there by default
+    }
+}
+
+
+
+-(void) hideBuyButton {
+    self.buyButton.hidden = TRUE;
 }
 
 -(void) awakeFromNib {

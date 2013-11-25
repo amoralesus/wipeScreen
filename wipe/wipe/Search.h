@@ -16,12 +16,14 @@
 
 - (NSURL *)urlWithSearchText:(NSString *)searchText;
 
-- (NSString *)performStoreRequestWithURL:(NSURL *)url ;
+- (NSString *)performRequestWithURL:(NSURL *)url ;
 
 - (void)showNetworkError;
 
 - (NSDictionary *)parseJSON:(NSString *)jsonString;
 
 - (NSMutableArray *)parseDictionaryAndSetResults:(NSDictionary *)dictionary;
+
+-(NSSet *) setWithAllProductIdentifiers;
 
 @end

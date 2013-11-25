@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BN4-D6-mHY">
-                    <rect key="frame" x="0.0" y="63" width="320" height="505"/>
+                    <rect key="frame" x="0.0" y="59" width="320" height="509"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -26,8 +26,11 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-FM-xf3">
-                    <rect key="frame" x="252" y="33" width="48" height="30"/>
+                    <rect key="frame" x="252" y="30" width="59" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="59" id="cQO-OJ-xHo"/>
+                    </constraints>
                     <state key="normal" title="Cancel">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -36,7 +39,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0I-sd-bBc">
-                    <rect key="frame" x="20" y="33" width="224" height="30"/>
+                    <rect key="frame" x="20" y="30" width="224" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -44,18 +47,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="gXk-FM-xf3" firstAttribute="top" secondItem="1" secondAttribute="top" constant="33" id="4yN-07-RT4"/>
-                <constraint firstItem="gXk-FM-xf3" firstAttribute="leading" secondItem="W0I-sd-bBc" secondAttribute="trailing" constant="8" id="610-wW-1CI"/>
-                <constraint firstItem="gXk-FM-xf3" firstAttribute="leading" secondItem="W0I-sd-bBc" secondAttribute="trailing" constant="8" id="Deo-85-48a"/>
-                <constraint firstAttribute="bottom" secondItem="BN4-D6-mHY" secondAttribute="bottom" id="GbF-lM-lsc"/>
-                <constraint firstItem="W0I-sd-bBc" firstAttribute="top" secondItem="1" secondAttribute="top" constant="33" id="PDQ-oA-v58"/>
-                <constraint firstItem="BN4-D6-mHY" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="cYC-A5-bUH"/>
-                <constraint firstItem="BN4-D6-mHY" firstAttribute="top" secondItem="W0I-sd-bBc" secondAttribute="bottom" id="dh5-Hh-UMr"/>
-                <constraint firstAttribute="trailing" secondItem="gXk-FM-xf3" secondAttribute="trailing" constant="20" id="gyp-Bb-aZL"/>
-                <constraint firstItem="W0I-sd-bBc" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="hdT-3Y-aeM"/>
-                <constraint firstItem="BN4-D6-mHY" firstAttribute="top" secondItem="gXk-FM-xf3" secondAttribute="bottom" id="jkp-Hf-Qy7"/>
-                <constraint firstItem="BN4-D6-mHY" firstAttribute="top" secondItem="W0I-sd-bBc" secondAttribute="bottom" id="s1L-eo-lx7"/>
-                <constraint firstAttribute="trailing" secondItem="BN4-D6-mHY" secondAttribute="trailing" id="was-DK-oY2"/>
+                <constraint firstItem="BN4-D6-mHY" firstAttribute="top" secondItem="1" secondAttribute="top" constant="59" id="AIl-sC-ohW"/>
+                <constraint firstAttribute="trailing" secondItem="BN4-D6-mHY" secondAttribute="trailing" id="Ec6-Xt-Me9"/>
+                <constraint firstAttribute="bottom" secondItem="BN4-D6-mHY" secondAttribute="bottom" id="IxW-OB-cxe"/>
+                <constraint firstItem="BN4-D6-mHY" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="VQa-CH-huT"/>
+                <constraint firstItem="W0I-sd-bBc" firstAttribute="top" secondItem="gXk-FM-xf3" secondAttribute="top" id="Za6-tU-Wyt"/>
+                <constraint firstItem="gXk-FM-xf3" firstAttribute="leading" secondItem="W0I-sd-bBc" secondAttribute="trailing" constant="8" symbolic="YES" id="l83-4a-rO1"/>
+                <constraint firstItem="W0I-sd-bBc" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="pdj-JT-xQu"/>
+                <constraint firstAttribute="trailing" secondItem="gXk-FM-xf3" secondAttribute="trailing" constant="9" id="rg8-eU-QQ8"/>
+                <constraint firstItem="W0I-sd-bBc" firstAttribute="top" secondItem="1" secondAttribute="top" constant="30" id="sxh-Ol-elW"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

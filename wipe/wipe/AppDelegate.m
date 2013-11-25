@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-
+#import "WipeIAPHelper.h"
 #import "Girl.h"
 
 
@@ -22,6 +22,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [WipeIAPHelper sharedInstance];
+    
+    
+    
+    
     self.seedCoredata = [[SeedCoredata alloc] initWithContext:[self managedObjectContext]];
     
     [self.seedCoredata setupInitialDataset];

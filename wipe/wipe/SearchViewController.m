@@ -12,7 +12,9 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 #import "SearchViewController.h"
 #import "Search.h"
 #import "SearchResultCell.h"
-#import "VideoPlayer.h"
+
+#import "WipeIAPHelper.h"
+#import <StoreKit/StoreKit.h>
 
 #import "MainNavigationController.h"
 
@@ -31,6 +33,7 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 @implementation SearchViewController {
     NSMutableArray * _searchResults;
     BOOL _isLoading;
+    NSArray * _sk_products;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,6 +56,7 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     
 
     self.tableView.rowHeight = 80;
+    self.tableView.allowsSelection = NO;
     
     UINib *cellNib = [UINib nibWithNibName:SearchResultCellIdentifier bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:SearchResultCellIdentifier];
@@ -63,7 +67,18 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     [self.searchTextField becomeFirstResponder];
     self.searchTextField.delegate = self;
     
+    [self refreshStoreKitProductsList];
 }
+
+- (void)refreshStoreKitProductsList {
+    _sk_products = nil;
+    [[WipeIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _sk_products = products;
+        }
+    }];
+}
+
 
 -(void)tableClicked
 {
@@ -101,10 +116,30 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
         SearchResultCell * cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier];
         SearchResult *searchResult = _searchResults[indexPath.row];
         [cell configureForSearchResult:searchResult];
+        cell.buyButton.tag = indexPath.row; // set this for purchasing and knowing which id
+        [cell.buyButton addTarget:self action:@selector(buyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     
 }
+
+- (void)buyButtonTapped:(id)sender {
+    UIButton *buyButton = (UIButton *)sender;
+    SearchResult *searchResult = _searchResults[buyButton.tag];
+    SKProduct *product = [self findSKProductWithIdentifier:searchResult.productCode];
+    NSLog(@"the product: %@", product);
+    [[WipeIAPHelper sharedInstance] buyProduct:product];
+}
+
+-(SKProduct *) findSKProductWithIdentifier:(NSString *) identifier {
+    for (SKProduct * theProduct in _sk_products) {
+        if ([theProduct.productIdentifier isEqualToString: identifier]) {
+            return theProduct;
+        }
+    }
+    return nil;
+}
+
 
 #pragma mark - Search Text Field Delegate
 
@@ -127,7 +162,7 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         NSURL *url = [search urlWithSearchText:string];
-        NSString *jsonString = [search performStoreRequestWithURL:url];
+        NSString *jsonString = [search performRequestWithURL:url];
         if (jsonString == nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [search showNetworkError];

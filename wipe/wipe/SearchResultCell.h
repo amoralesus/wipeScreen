@@ -16,6 +16,9 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *avatar;
 
+@property (nonatomic, weak) IBOutlet UIButton *buyButton;
+
+
 
 - (void)configureForSearchResult:(SearchResult *)searchResult;
 

@@ -31,6 +31,9 @@
 		B6D41CD4184140A200665449 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CD3184140A200665449 /* Search.m */; };
 		B6D41CD618418F1F00665449 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D41CD518418F1F00665449 /* SearchResultCell.xib */; };
 		B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D41CDB184191B900665449 /* SearchResultCell.m */; };
+		B6EC3FD61842FCAF0054861F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC3FD51842FCAF0054861F /* StoreKit.framework */; };
+		B6EC3FDC1842FCE50054861F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EC3FDB1842FCE50054861F /* IAPHelper.m */; };
+		B6EC3FDF1842FFF20054861F /* WipeIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EC3FDE1842FFF20054861F /* WipeIAPHelper.m */; };
 		B6F8A02D1842AF9E002B6D89 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F8A02C1842AF9E002B6D89 /* MainNavigationController.m */; };
 		B6F96F8618423C6300F438B2 /* com.wipemyscreenclean.bethany.mov in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */; };
 		B6F96F8818423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6F96F8718423C6A00F438B2 /* com.wipemyscreenclean.bethany.jpg */; };
@@ -84,6 +87,11 @@
 		B6D41CD518418F1F00665449 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		B6D41CDA184191B900665449 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		B6D41CDB184191B900665449 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		B6EC3FD51842FCAF0054861F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B6EC3FDA1842FCE50054861F /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		B6EC3FDB1842FCE50054861F /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		B6EC3FDD1842FFF20054861F /* WipeIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WipeIAPHelper.h; sourceTree = "<group>"; };
+		B6EC3FDE1842FFF20054861F /* WipeIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WipeIAPHelper.m; sourceTree = "<group>"; };
 		B6F8A02B1842AF9E002B6D89 /* MainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
 		B6F8A02C1842AF9E002B6D89 /* MainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
 		B6F96F8518423C6300F438B2 /* com.wipemyscreenclean.bethany.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = com.wipemyscreenclean.bethany.mov; sourceTree = "<group>"; };
@@ -100,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EC3FD61842FCAF0054861F /* StoreKit.framework in Frameworks */,
 				B6CA40241841CC35004B8E0F /* CoreData.framework in Frameworks */,
 				B6CA3FE11841C802004B8E0F /* MediaPlayer.framework in Frameworks */,
 				B6CEE5DA1841391000149B01 /* CoreGraphics.framework in Frameworks */,
@@ -142,6 +151,7 @@
 		B6CEE5D61841391000149B01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6EC3FD51842FCAF0054861F /* StoreKit.framework */,
 				B6CA40231841CC35004B8E0F /* CoreData.framework */,
 				B6CA3FE01841C802004B8E0F /* MediaPlayer.framework */,
 				B6CEE5D71841391000149B01 /* Foundation.framework */,
@@ -158,6 +168,10 @@
 				B6CEE5E61841391000149B01 /* AppDelegate.h */,
 				B6CEE5E71841391000149B01 /* AppDelegate.m */,
 				B6F8A02B1842AF9E002B6D89 /* MainNavigationController.h */,
+				B6EC3FDA1842FCE50054861F /* IAPHelper.h */,
+				B6EC3FDB1842FCE50054861F /* IAPHelper.m */,
+				B6EC3FDD1842FFF20054861F /* WipeIAPHelper.h */,
+				B6EC3FDE1842FFF20054861F /* WipeIAPHelper.m */,
 				B6F8A02C1842AF9E002B6D89 /* MainNavigationController.m */,
 				B6CA402B1841CF6E004B8E0F /* SeedCoredata.h */,
 				B6CA402C1841CF6E004B8E0F /* SeedCoredata.m */,
@@ -310,9 +324,11 @@
 				B6F8A02D1842AF9E002B6D89 /* MainNavigationController.m in Sources */,
 				B6D41CCD18413C7500665449 /* SearchViewController.m in Sources */,
 				B6D41CD4184140A200665449 /* Search.m in Sources */,
+				B6EC3FDC1842FCE50054861F /* IAPHelper.m in Sources */,
 				B6CA402D1841CF6E004B8E0F /* SeedCoredata.m in Sources */,
 				B6F96FDF18425C3C00F438B2 /* GirlViewCell.m in Sources */,
 				B6D41CD118413FEE00665449 /* SearchResult.m in Sources */,
+				B6EC3FDF1842FFF20054861F /* WipeIAPHelper.m in Sources */,
 				B6F96F8F1842559300F438B2 /* GirlsViewController.m in Sources */,
 				B6CEE5E41841391000149B01 /* main.m in Sources */,
 				B6CA40271841CC5C004B8E0F /* coredata.xcdatamodeld in Sources */,

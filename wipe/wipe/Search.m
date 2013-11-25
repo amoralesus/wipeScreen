@@ -19,7 +19,7 @@
     return url;
 }
 
-- (NSString *)performStoreRequestWithURL:(NSURL *)url {
+- (NSString *)performRequestWithURL:(NSURL *)url {
     NSError *error;
     NSString *resultString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     if (resultString == nil) {
@@ -71,5 +71,29 @@
     }
     return results;
 }
+
+
+// not asynchronous
+-(NSArray *) getAllRecords {
+    NSURL *url = [self urlForAllRecords];
+    NSString *jsonString = [self performRequestWithURL:url];
+    NSDictionary *dictionary = [self parseJSON:jsonString];
+    return [self parseDictionaryAndSetResults:dictionary];
+}
+
+-(NSSet *) setWithAllProductIdentifiers {
+    NSMutableArray *array = [NSMutableArray arrayWithObjects: nil];
+    for (SearchResult *result in [self getAllRecords]) {
+        [array addObject:result.productCode];
+    }
+    return [NSSet setWithArray:array];
+}
+
+- (NSURL *)urlForAllRecords {
+    NSString *urlString = [NSString stringWithFormat: @"http://personal.amorales.us/girls?q[id_greater_than]=0"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    return url;
+}
+
 
 @end
