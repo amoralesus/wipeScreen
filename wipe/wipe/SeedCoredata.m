@@ -54,15 +54,14 @@
     
     NSString * primaryKeyName = [dict valueForKey:@"primaryKeyName"];
     NSString * primaryKeyValue = [dict valueForKey:primaryKeyName];
-    NSLog(@"PrimaryKeyName: '%@'", primaryKeyName);
-    NSLog(@"PrimaryKeyValue: '%@'", primaryKeyValue);
+
     // had to put %K for the key name, and take out the single quotes out of %@ for this to work
     NSPredicate *p=[NSPredicate predicateWithFormat:@"%K = %@", primaryKeyName, primaryKeyValue];
     [fetch setPredicate:p];
     
     NSError *fetchError;
     NSArray *fetchedRecords=[_context executeFetchRequest:fetch error:&fetchError];
-    NSLog(@"records %lu", (unsigned long)[fetchedRecords count]);
+
     return fetchedRecords;
 }
 

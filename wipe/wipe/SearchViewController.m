@@ -17,11 +17,13 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 #import "MainNavigationController.h"
 
 
-@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 
-@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+- (IBAction)cancelButtonPressed:(id)sender;
 
 
 @end
@@ -50,8 +52,6 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     [self.tableView addGestureRecognizer:tapgesture];
     
 
-    // move the table view down a bit to allow the first rows to show under the search bar
-    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     self.tableView.rowHeight = 80;
     
     UINib *cellNib = [UINib nibWithNibName:SearchResultCellIdentifier bundle:nil];
@@ -60,15 +60,15 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     cellNib = [UINib nibWithNibName:NothingFoundCellIndentifier bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:NothingFoundCellIndentifier];
     
-    [self.searchBar becomeFirstResponder];
-    
+    [self.searchTextField becomeFirstResponder];
+    self.searchTextField.delegate = self;
     
 }
 
 -(void)tableClicked
 {
     
-    [self.searchBar resignFirstResponder];
+    [self.searchTextField resignFirstResponder];
     
 }
 
@@ -106,13 +106,15 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     
 }
 
-#pragma mark - UISearchBarDelegate
+#pragma mark - Search Text Field Delegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    if([searchBar.text length] > 0) {
-        [self runSearchFor:searchBar.text];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    if([textField.text length] > 0) {
+        [self runSearchFor:textField.text];
+        NSLog(@"%@", textField.text);
     }
+    return YES;
 }
 
 
@@ -149,16 +151,10 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     });
 }
 
-//trick to get the ugly white bar at the top
-- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
-    return UIBarPositionTopAttached;
-}
 
-
--(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+- (IBAction)cancelButtonPressed:(id)sender {
     MainNavigationController *navController = (MainNavigationController *) self.navigationController;
-    
     [navController popToRootViewControllerAnimated:YES];
-
+    
 }
 @end

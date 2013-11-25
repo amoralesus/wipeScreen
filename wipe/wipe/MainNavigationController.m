@@ -35,9 +35,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,9 +47,6 @@
     
     self.searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
     [self pushViewController: self.searchViewController animated: YES];
-    
-    
-    NSLog(@"here");
 
 }
 
