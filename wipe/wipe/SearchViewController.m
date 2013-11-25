@@ -22,7 +22,7 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-- (IBAction)doneClicked:(id)sender;
+
 
 @end
 
@@ -59,6 +59,9 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     
     cellNib = [UINib nibWithNibName:NothingFoundCellIndentifier bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:NothingFoundCellIndentifier];
+    
+    [self.searchBar becomeFirstResponder];
+    
     
 }
 
@@ -152,10 +155,10 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 
-- (IBAction)doneClicked:(id)sender {
+-(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     MainNavigationController *navController = (MainNavigationController *) self.navigationController;
     
     [navController popToRootViewControllerAnimated:YES];
-    
+
 }
 @end
