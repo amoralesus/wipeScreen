@@ -11,7 +11,7 @@
 #import <StoreKit/StoreKit.h>
 
 @implementation Search {
-    NSArray * _sk_products;
+    NSArray * _products;
 }
 
 
@@ -25,29 +25,15 @@
 }
 
 - (void)refreshStoreKitProductsList {
-    _sk_products = nil;
+    _products = nil;
     [[WipeIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
-            _sk_products = products;
+            _products = products;
         }
     }];
 }
 
--(void) buyProductWithIdentifier:(NSString *) identifier {
-    
-    SKProduct *product = [self findSKProductWithIdentifier:identifier];
-    [[WipeIAPHelper sharedInstance] buyProduct:product];
-}
 
-
--(SKProduct *) findSKProductWithIdentifier:(NSString *) identifier {
-    for (SKProduct * theProduct in _sk_products) {
-        if ([theProduct.productIdentifier isEqualToString: identifier]) {
-            return theProduct;
-        }
-    }
-    return nil;
-}
 
 // could not figure out a way to put this method in the Search class
 -(void) runSearchFor:(NSString *)string AndUpdateView: (UITableView *) theView {
@@ -137,11 +123,25 @@
         searchResult.name = resultDict[@"name"];
         searchResult.description = resultDict[@"description"];
         searchResult.productCode = resultDict[@"product_code"];
+        searchResult.product = [self findProductWithIdentifier:searchResult.productCode];
         [results addObject:searchResult];
         }
     }
     return results;
 }
+
+
+
+
+-(IAPProduct *) findProductWithIdentifier:(NSString *) identifier {
+    for (IAPProduct * theProduct in _products) {
+        if ([theProduct.productIdentifier isEqualToString: identifier]) {
+            return theProduct;
+        }
+    }
+    return nil;
+}
+
 
 
 // not asynchronous

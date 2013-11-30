@@ -11,6 +11,11 @@
 #import "IAPHelper.h"
 #import <StoreKit/StoreKit.h>
 
+#import "IAPProductPurchase.h"
+
+#import "IAPProduct.h"
+
+
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 
 @interface IAPHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
@@ -90,25 +95,21 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     return [_purchasedProductIdentifiers containsObject:productIdentifier];
 }
 
-- (void)buyProduct:(SKProduct *)product {
+- (void)buyProduct:(SKProduct *)skProduct {
+    
+    NSLog(@"%@",skProduct.productIdentifier);
+    
+    IAPProduct *product = [self addProductForSkProduct:skProduct];
     
     NSLog(@"Buying %@...", product.productIdentifier);
     
-    SKPayment * payment = [SKPayment paymentWithProduct:product];
+    product.purchaseInProgress = YES;
+    SKPayment * payment = [SKPayment
+                           paymentWithProduct:product.skProduct];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
     
 }
 
--(void) buyProductWithIdentifier:(NSString *)productIdentifier {
-    SKProduct *product;
-    
-    [self buyProduct:product];
-    
-}
-
--(void) findProductWithIdentifier: (NSString *) productIdentifier {
-    
-}
 
 
 
@@ -167,6 +168,244 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     
 }
 
+- (void)provideContentForTransaction: (SKPaymentTransaction *)transaction productIdentifier:(NSString *)productIdentifier {
+    [[SKPaymentQueue defaultQueue] startDownloads:transaction.downloads];
+}
+
+
+- (void)paymentQueue:(SKPaymentQueue *)queue
+    updatedDownloads:(NSArray *)downloads {
+    
+    // 1
+    SKDownload * download = [downloads objectAtIndex:0];
+    SKPaymentTransaction * transaction = download.transaction;
+    SKPayment * payment = transaction.payment;
+    NSString * productIdentifier = payment.productIdentifier;
+    IAPProduct * product = _products[productIdentifier];
+    
+    // 2
+    product.progress = download.progress;
+    
+    // 3
+    NSLog(@"Download state: %d", download.downloadState);
+    if (download.downloadState == SKDownloadStateFinished) {
+        
+        // 4
+        [self purchaseNonconsumableAtURL:download.contentURL
+                    forProductIdentifier:productIdentifier];
+        product.purchaseInProgress = NO;
+        [[SKPaymentQueue defaultQueue] finishTransaction:
+         transaction];
+        
+    } else if (download.downloadState ==
+               SKDownloadStateFailed) {
+        
+        // 5
+        NSLog(@"Download failed.");
+        [self notifyStatusForProductIdentifier:productIdentifier
+                                        string:@"Download failed."];
+        product.purchaseInProgress = NO;
+        [[SKPaymentQueue defaultQueue] finishTransaction:
+         transaction];
+        
+    } else if (download.downloadState ==
+               SKDownloadStateCancelled) {
+        
+        // 6
+        NSLog(@"Download cancelled.");
+        [self notifyStatusForProductIdentifier:productIdentifier
+                                        string:@"Download cancelled."];
+        product.purchaseInProgress = NO;
+        [[SKPaymentQueue defaultQueue] finishTransaction:
+         transaction];
+        
+    } else {
+        // 7
+        NSLog(@"Download for %@: %0.2f complete",
+              productIdentifier, product.progress);
+    }
+}
+
+- (NSString *)libraryPath {
+    NSArray * libraryPaths =
+    NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
+                                        NSUserDomainMask, YES);
+    return libraryPaths[0];
+}
+
+
+- (void)purchaseNonconsumableAtURL:(NSURL *)nonLocalURL
+              forProductIdentifier:(NSString *)productIdentifier {
+    
+    NSError * error = nil;
+    BOOL success = FALSE;
+    BOOL exists = FALSE;
+    BOOL isDirectory = FALSE;
+    
+    // 1
+    NSString * libraryRelativePath =
+    nonLocalURL.lastPathComponent;
+    NSString * localPath = [[self libraryPath]
+                            stringByAppendingPathComponent:libraryRelativePath];
+    NSURL * localURL = [NSURL fileURLWithPath:localPath
+                                  isDirectory:YES];
+    exists = [[NSFileManager defaultManager]
+              fileExistsAtPath:localPath isDirectory:&isDirectory];
+    
+    // 2
+    if (exists) {
+        BOOL success = [[NSFileManager defaultManager]
+                        removeItemAtURL:localURL error:&error];
+        if (!success) {
+            NSLog(@"Couldn't delete directory at %@: %@",
+                  localURL, error.localizedDescription);
+        }
+    }
+    
+    // 3
+    NSLog(@"Copying directory from %@ to %@", nonLocalURL,
+          localURL);
+    success = [[NSFileManager defaultManager]
+               copyItemAtURL:nonLocalURL toURL:localURL error:&error];
+    if (!success) {
+        NSLog(@"Failed to copy directory: %@",
+              error.localizedDescription);
+        [self notifyStatusForProductIdentifier:productIdentifier
+                                        string:@"Copying failed."];
+        return;
+    }
+    
+    // 1
+    NSString * contentVersion = @"";
+    NSURL * contentInfoURL = [localURL
+                              URLByAppendingPathComponent:@"ContentInfo.plist"];
+    exists = [[NSFileManager defaultManager]
+              fileExistsAtPath:contentInfoURL.path
+              isDirectory:&isDirectory];
+    if (exists) {
+        // 2
+        NSDictionary * contentInfo = [NSDictionary
+                                      dictionaryWithContentsOfURL:contentInfoURL];
+        contentVersion = contentInfo[@"ContentVersion"];
+        NSString * contentsPath = [libraryRelativePath
+                                   stringByAppendingPathComponent:@"Contents"];
+        // 3
+        NSString * fullContentsPath = [[self libraryPath]
+                                       stringByAppendingPathComponent:contentsPath];
+        if ([[NSFileManager defaultManager]
+             fileExistsAtPath:fullContentsPath]) {
+            libraryRelativePath = contentsPath;
+            localPath = [[self libraryPath]
+                         stringByAppendingPathComponent:libraryRelativePath];
+            localURL = [NSURL fileURLWithPath:localPath
+                                  isDirectory:YES];
+        }
+    }
+    
+    // 4
+    [self provideContentWithURL:localURL];
+    
+    // 5
+    IAPProductPurchase * previousPurchase = [self purchaseForProductIdentifier:productIdentifier];
+    
+    
+    if (previousPurchase) {
+        previousPurchase.timesPurchased++;
+        
+        // 6
+        NSString * oldPath = [[self libraryPath]
+                              stringByAppendingPathComponent:
+                              previousPurchase.libraryRelativePath];
+        success = [[NSFileManager defaultManager]
+                   removeItemAtPath:oldPath error:&error];
+        if (!success) {
+            NSLog(@"Could not remove old purchase at %@",
+                  oldPath);
+        } else {
+            NSLog(@"Removed old purchase at %@", oldPath);
+        }
+        
+        // 7
+        previousPurchase.libraryRelativePath =
+        libraryRelativePath;
+        previousPurchase.contentVersion = contentVersion;
+    } else {
+        IAPProductPurchase * purchase =
+        [[IAPProductPurchase alloc]
+         initWithProductIdentifier:productIdentifier
+         consumable:NO timesPurchased:1
+         libraryRelativePath:libraryRelativePath
+         contentVersion:contentVersion];
+        [self addPurchase:purchase
+     forProductIdentifier:productIdentifier];
+    }
+    
+    [self notifyStatusForProductIdentifier:productIdentifier string:@"Purchase complete!"];
+    
+
+    
+}
+
+
+
+
+
+- (void)provideContentWithURL:(NSURL *)URL {
+}
+
+- (void)notifyStatusForProductIdentifier: (NSString *)productIdentifier string:(NSString *)string {
+    IAPProduct * product = _products[productIdentifier];
+    [self notifyStatusForProduct:product string:string];
+}
+
+- (void)notifyStatusForProduct:(IAPProduct *)product
+                        string:(NSString *)string {
+    
+}
+
+
+- (IAPProductPurchase *)purchaseForProductIdentifier: (NSString *)productIdentifier {
+    IAPProduct * product = _products[productIdentifier];
+    if (!product) return nil;
+    
+    return product.purchase;
+}
+
+
+- (void)addPurchase:(IAPProductPurchase *)purchase forProductIdentifier:(NSString *)productIdentifier {
+    
+    IAPProduct * product = _products[productIdentifier];
+    product.purchase = purchase;
+    
+}
+
+- (IAPProduct *)addProductForSkProduct: (SKProduct *)skProduct {
+    IAPProduct * product = _products[skProduct.productIdentifier];
+    if (product == nil) {
+        product = [[IAPProduct alloc] initWithProductIdentifier:skProduct.productIdentifier];
+        product.skProduct = skProduct;
+        _products[skProduct.productIdentifier] = product;
+    }
+    return product;
+}
+
+
+- (void)cancelDownloads:(NSArray *)downloads {
+    [[SKPaymentQueue defaultQueue] cancelDownloads:downloads];
+}
+
+- (void)pauseDownloads:(NSArray *)downloads {
+    [[SKPaymentQueue defaultQueue] pauseDownloads:downloads];
+}
+
+- (void)resumeDownloads:(NSArray *)downloads {
+    [[SKPaymentQueue defaultQueue] resumeDownloads:downloads];
+}
+
+- (void)restoreCompletedTransactions {
+    [[SKPaymentQueue defaultQueue]
+     restoreCompletedTransactions];
+}
 
 
 

@@ -32,7 +32,6 @@
 
 - (void)refreshStoreKitProductsList;
 
--(void) buyProductWithIdentifier:(NSString *) identifier;
 
 -(void) runSearchFor:(NSString *)string AndUpdateView: (UITableView *) theView;
 

@@ -12,14 +12,21 @@ UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 
+
+@class IAPProduct;
+
 @interface IAPHelper : NSObject
 
-- (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
-- (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
+@property (nonatomic, strong) NSMutableDictionary * products;
 
-- (void)buyProduct:(SKProduct *)product;
+- (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
+- (void)buyProduct:(IAPProduct *)product;
+- (void)restoreCompletedTransactions;
+- (void)pauseDownloads:(NSArray *)downloads;
+- (void)resumeDownloads:(NSArray *)downloads;
+- (void)cancelDownloads:(NSArray *)downloads;
+
 - (BOOL)productPurchased:(NSString *)productIdentifier;
 
--(void) buyProductWithIdentifier:(NSString *) productIdentifier;
 
 @end

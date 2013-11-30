@@ -8,6 +8,7 @@
 
 #import "SearchResult.h"
 #import "WipeIAPHelper.h"
+#import <StoreKit/StoreKit.h>
 
 @implementation SearchResult
 
@@ -19,6 +20,10 @@
 
 -(BOOL) productPurchased {
     return [[WipeIAPHelper sharedInstance] productPurchased:self.productCode];
+}
+
+-(void) buyProduct {
+    [[WipeIAPHelper sharedInstance] buyProduct:self.product];
 }
 
 @end

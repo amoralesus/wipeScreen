@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B60E3EAB184263C30037F32A /* GirlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60E3EAA184263C30037F32A /* GirlViewCell.xib */; };
+		B61D0342184A46C30037D3C8 /* IAPProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = B61D033D184A46C30037D3C8 /* IAPProduct.m */; };
+		B61D0343184A46C30037D3C8 /* IAPProductInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B61D033F184A46C30037D3C8 /* IAPProductInfo.m */; };
+		B61D0344184A46C30037D3C8 /* IAPProductPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = B61D0341184A46C30037D3C8 /* IAPProductPurchase.m */; };
 		B6CA3FDC1841B9B8004B8E0F /* NoResultsFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */; };
 		B6CA3FDF1841C71F004B8E0F /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */; };
 		B6CA3FE11841C802004B8E0F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CA3FE01841C802004B8E0F /* MediaPlayer.framework */; };
@@ -54,6 +57,12 @@
 
 /* Begin PBXFileReference section */
 		B60E3EAA184263C30037F32A /* GirlViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GirlViewCell.xib; sourceTree = "<group>"; };
+		B61D033C184A46C30037D3C8 /* IAPProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPProduct.h; sourceTree = "<group>"; };
+		B61D033D184A46C30037D3C8 /* IAPProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPProduct.m; sourceTree = "<group>"; };
+		B61D033E184A46C30037D3C8 /* IAPProductInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPProductInfo.h; sourceTree = "<group>"; };
+		B61D033F184A46C30037D3C8 /* IAPProductInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPProductInfo.m; sourceTree = "<group>"; };
+		B61D0340184A46C30037D3C8 /* IAPProductPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPProductPurchase.h; sourceTree = "<group>"; };
+		B61D0341184A46C30037D3C8 /* IAPProductPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPProductPurchase.m; sourceTree = "<group>"; };
 		B6CA3FDB1841B9B8004B8E0F /* NoResultsFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultsFoundCell.xib; sourceTree = "<group>"; };
 		B6CA3FDD1841C71F004B8E0F /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
 		B6CA3FDE1841C71F004B8E0F /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
@@ -165,6 +174,12 @@
 		B6CEE5DD1841391000149B01 /* wipe */ = {
 			isa = PBXGroup;
 			children = (
+				B61D033C184A46C30037D3C8 /* IAPProduct.h */,
+				B61D033D184A46C30037D3C8 /* IAPProduct.m */,
+				B61D033E184A46C30037D3C8 /* IAPProductInfo.h */,
+				B61D033F184A46C30037D3C8 /* IAPProductInfo.m */,
+				B61D0340184A46C30037D3C8 /* IAPProductPurchase.h */,
+				B61D0341184A46C30037D3C8 /* IAPProductPurchase.m */,
 				B6CEE5E61841391000149B01 /* AppDelegate.h */,
 				B6CEE5E71841391000149B01 /* AppDelegate.m */,
 				B6F8A02B1842AF9E002B6D89 /* MainNavigationController.h */,
@@ -318,11 +333,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61D0343184A46C30037D3C8 /* IAPProductInfo.m in Sources */,
 				B6D41CDC184191B900665449 /* SearchResultCell.m in Sources */,
 				B6CA3FDF1841C71F004B8E0F /* VideoPlayer.m in Sources */,
+				B61D0342184A46C30037D3C8 /* IAPProduct.m in Sources */,
 				B6CEE5E81841391000149B01 /* AppDelegate.m in Sources */,
 				B6F8A02D1842AF9E002B6D89 /* MainNavigationController.m in Sources */,
 				B6D41CCD18413C7500665449 /* SearchViewController.m in Sources */,
+				B61D0344184A46C30037D3C8 /* IAPProductPurchase.m in Sources */,
 				B6D41CD4184140A200665449 /* Search.m in Sources */,
 				B6EC3FDC1842FCE50054861F /* IAPHelper.m in Sources */,
 				B6CA402D1841CF6E004B8E0F /* SeedCoredata.m in Sources */,

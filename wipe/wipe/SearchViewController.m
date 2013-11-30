@@ -117,7 +117,7 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 - (void)buyButtonTapped:(id)sender {
     UIButton *buyButton = (UIButton *)sender;
     SearchResult *searchResult = _search.searchResults[buyButton.tag];
-    [_search buyProductWithIdentifier:searchResult.productCode];
+    [searchResult buyProduct];
 }
 
 #pragma mark - Search Text Field Delegate
