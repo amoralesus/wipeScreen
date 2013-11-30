@@ -8,8 +8,6 @@
 
 #import "SearchResultCell.h"
 
-#import "WipeIAPHelper.h"
-
 
 @implementation SearchResultCell
 
@@ -44,7 +42,7 @@
     UIImage *image = [UIImage imageWithData:data];
     [self.avatar setImage:image];
     
-    if ([[WipeIAPHelper sharedInstance] productPurchased:searchResult.productCode]) {
+    if ([searchResult productPurchased] == YES) {
         [self.buyButton setEnabled:NO];
         [self.buyButton setTitle:@"√" forState:UIControlStateDisabled];
 

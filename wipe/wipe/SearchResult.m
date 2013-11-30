@@ -7,6 +7,7 @@
 //
 
 #import "SearchResult.h"
+#import "WipeIAPHelper.h"
 
 @implementation SearchResult
 
@@ -14,6 +15,10 @@
 -(NSString *) productURL {
     NSString * url = [NSString stringWithFormat: @"http://personal.amorales.us/girls/1/avatar/?product_code=%@", self.productCode];
     return url;
+}
+
+-(BOOL) productPurchased {
+    return [[WipeIAPHelper sharedInstance] productPurchased:self.productCode];
 }
 
 @end

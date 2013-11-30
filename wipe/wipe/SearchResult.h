@@ -17,6 +17,9 @@
 @property (nonatomic, copy) NSString *productCode;
 
 
+
 -(NSString *) productURL;
+
+-(BOOL) productPurchased;
 
 @end

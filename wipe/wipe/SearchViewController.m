@@ -13,8 +13,6 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 #import "Search.h"
 #import "SearchResultCell.h"
 
-#import "WipeIAPHelper.h"
-#import <StoreKit/StoreKit.h>
 
 #import "MainNavigationController.h"
 
@@ -31,17 +29,15 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 @end
 
 @implementation SearchViewController {
-    NSMutableArray * _searchResults;
     BOOL _isLoading;
-    NSArray * _sk_products;
+    Search * _search;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        _searchResults = [NSMutableArray arrayWithObjects: nil];
+        
     }
     return self;
 }
@@ -67,17 +63,12 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
     [self.searchTextField becomeFirstResponder];
     self.searchTextField.delegate = self;
     
-    [self refreshStoreKitProductsList];
+    _search = [[Search alloc] init];
+    [_search refreshStoreKitProductsList];
+    
 }
 
-- (void)refreshStoreKitProductsList {
-    _sk_products = nil;
-    [[WipeIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success) {
-            _sk_products = products;
-        }
-    }];
-}
+
 
 
 -(void)tableClicked
@@ -95,26 +86,26 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
         
-    if (_searchResults == nil) {
+    if (_search.searchResults == nil) {
         return 0;
     }
-    else if ([_searchResults count] == 0){
+    else if ([_search.searchResults count] == 0){
         return 1;
     }
     else {
-        return [_searchResults count];
+        return [_search.searchResults count];
     }
 }
 
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if([_searchResults count] == 0) {
+    if([_search.searchResults count] == 0) {
         return [tableView dequeueReusableCellWithIdentifier: NothingFoundCellIndentifier forIndexPath:indexPath];
     }
     else {
         SearchResultCell * cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier];
-        SearchResult *searchResult = _searchResults[indexPath.row];
+        SearchResult *searchResult = _search.searchResults[indexPath.row];
         [cell configureForSearchResult:searchResult];
         cell.buyButton.tag = indexPath.row; // set this for purchasing and knowing which id
         [cell.buyButton addTarget:self action:@selector(buyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -125,65 +116,18 @@ static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)buyButtonTapped:(id)sender {
     UIButton *buyButton = (UIButton *)sender;
-    SearchResult *searchResult = _searchResults[buyButton.tag];
-    SKProduct *product = [self findSKProductWithIdentifier:searchResult.productCode];
-    NSLog(@"the product: %@", product);
-    [[WipeIAPHelper sharedInstance] buyProduct:product];
+    SearchResult *searchResult = _search.searchResults[buyButton.tag];
+    [_search buyProductWithIdentifier:searchResult.productCode];
 }
-
--(SKProduct *) findSKProductWithIdentifier:(NSString *) identifier {
-    for (SKProduct * theProduct in _sk_products) {
-        if ([theProduct.productIdentifier isEqualToString: identifier]) {
-            return theProduct;
-        }
-    }
-    return nil;
-}
-
 
 #pragma mark - Search Text Field Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     if([textField.text length] > 0) {
-        [self runSearchFor:textField.text];
-        NSLog(@"%@", textField.text);
+        [_search runSearchFor:textField.text AndUpdateView:_tableView];
     }
     return YES;
-}
-
-
-// could not figure out a way to put this method in the Search class
--(void) runSearchFor:(NSString *)string {
-    _isLoading = YES;
-    [_tableView reloadData];
-    _searchResults = [NSMutableArray arrayWithCapacity:10];
-    Search * search = [[Search alloc] init];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        NSURL *url = [search urlWithSearchText:string];
-        NSString *jsonString = [search performRequestWithURL:url];
-        if (jsonString == nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [search showNetworkError];
-            });
-            return;
-        }
-        NSDictionary *dictionary = [search parseJSON:jsonString];
-        
-        if (dictionary == nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [search showNetworkError];
-            });
-            return;
-        }
-        _searchResults = [search parseDictionaryAndSetResults:dictionary];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _isLoading = NO;
-            [_tableView reloadData];
-        });
-    });
 }
 
 

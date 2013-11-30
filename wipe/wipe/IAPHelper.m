@@ -28,7 +28,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
     
     if ((self = [super init])) {
-        NSLog(@"here");
+
         // Store product identifiers
         _productIdentifiers = productIdentifiers;
         
@@ -68,17 +68,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     
-    NSLog(@"Loaded list of products...");
     _productsRequest = nil;
     
     NSArray * skProducts = response.products;
-    for (SKProduct * skProduct in skProducts) {
-        NSLog(@"Found product: %@ %@ %0.2f",
-              skProduct.productIdentifier,
-              skProduct.localizedTitle,
-              skProduct.price.floatValue);
-    }
-    
     _completionHandler(YES, skProducts);
     _completionHandler = nil;
     
@@ -174,6 +166,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:nil];
     
 }
+
+
 
 
 @end

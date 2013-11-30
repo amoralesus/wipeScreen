@@ -7,10 +7,81 @@
 //
 
 #import "Search.h"
+#import "WipeIAPHelper.h"
+#import <StoreKit/StoreKit.h>
+
+@implementation Search {
+    NSArray * _sk_products;
+}
 
 
+-(id) init {
+    
+    self = [super init];
+    // need to do this before seach can search;
+    self.searchResults = [NSMutableArray arrayWithObjects: nil];
+    
+    return self;
+}
 
-@implementation Search 
+- (void)refreshStoreKitProductsList {
+    _sk_products = nil;
+    [[WipeIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _sk_products = products;
+        }
+    }];
+}
+
+-(void) buyProductWithIdentifier:(NSString *) identifier {
+    
+    SKProduct *product = [self findSKProductWithIdentifier:identifier];
+    [[WipeIAPHelper sharedInstance] buyProduct:product];
+}
+
+
+-(SKProduct *) findSKProductWithIdentifier:(NSString *) identifier {
+    for (SKProduct * theProduct in _sk_products) {
+        if ([theProduct.productIdentifier isEqualToString: identifier]) {
+            return theProduct;
+        }
+    }
+    return nil;
+}
+
+// could not figure out a way to put this method in the Search class
+-(void) runSearchFor:(NSString *)string AndUpdateView: (UITableView *) theView {
+    self.isLoading = YES;
+    [theView reloadData];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSURL *url = [self urlWithSearchText:string];
+        NSString *jsonString = [self performRequestWithURL:url];
+        if (jsonString == nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showNetworkError];
+            });
+            return;
+        }
+        NSDictionary *dictionary = [self parseJSON:jsonString];
+        
+        if (dictionary == nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showNetworkError];
+            });
+            return;
+        }
+        self.searchResults = [self parseDictionaryAndSetResults:dictionary];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.isLoading = NO;
+            [theView reloadData];
+        });
+    });
+}
+
+
 
 - (NSURL *)urlWithSearchText:(NSString *)searchText {
     NSString *escapedSearchText = [searchText stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];

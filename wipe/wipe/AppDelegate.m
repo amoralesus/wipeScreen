@@ -24,9 +24,6 @@
 {
     [WipeIAPHelper sharedInstance];
     
-    
-    
-    
     self.seedCoredata = [[SeedCoredata alloc] initWithContext:[self managedObjectContext]];
     
     [self.seedCoredata setupInitialDataset];

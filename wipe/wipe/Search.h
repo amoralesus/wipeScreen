@@ -11,8 +11,12 @@
 #import "SearchResult.h"
 
 
+
+
 @interface Search : NSObject
 
+@property NSMutableArray * searchResults;
+@property BOOL isLoading;
 
 - (NSURL *)urlWithSearchText:(NSString *)searchText;
 
@@ -25,5 +29,11 @@
 - (NSMutableArray *)parseDictionaryAndSetResults:(NSDictionary *)dictionary;
 
 -(NSSet *) setWithAllProductIdentifiers;
+
+- (void)refreshStoreKitProductsList;
+
+-(void) buyProductWithIdentifier:(NSString *) identifier;
+
+-(void) runSearchFor:(NSString *)string AndUpdateView: (UITableView *) theView;
 
 @end
